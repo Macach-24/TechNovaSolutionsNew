@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechNova Solutions | Soporte Técnico y Desarrollo</title>
+    <style>
+        /* Paleta de colores Premium Dark / Cyber-Tech */
+        :root {
+            --bg-dark: #0b0f19; /* Fondo ultra oscuro */
+            --bg-card: rgba(17, 25, 40, 0.65); /* Tarjetas translúcidas */
+            --border-glow: rgba(0, 242, 254, 0.15); /* Brillo cian */
+            --primary-glow: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%); /* Degradado de neón */
+            --accent-cyan: #00f2fe;
+            --accent-purple: #a855f7;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Estilos Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-main);
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(168, 85, 247, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(0, 242, 254, 0.12) 0px, transparent 50%);
+            background-attachment: fixed;
+            overflow-x: hidden;
+        }
+
+        /* Navegación - Efecto Cristal */
+        header {
+            background-color: rgba(11, 15, 25, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .brand-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .brand-container img {
+            height: 42px;
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 0 8px rgba(0, 242, 254, 0.6));
+            transition: var(--transition);
+        }
+
+        .brand-container:hover img {
+            transform: scale(1.05) rotate(3deg);
+        }
+
+        .logo-text {
+            color: var(--text-main);
+            font-size: 1.35rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            background: linear-gradient(120deg, #ffffff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            position: relative;
+            padding: 0.25rem 0;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-glow);
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            color: var(--accent-cyan);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Sección Hero */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 1.5rem;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff 30%, #a855f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 650px;
+            margin-bottom: 2.5rem;
+        }
+
+        /* Botón de Neón */
+        .btn {
+            background: var(--primary-glow);
+            color: var(--bg-dark);
+            padding: 0.9rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 35px rgba(0, 242, 254, 0.6);
+            filter: brightness(1.1);
+        }
+
+        /* Secciones */
+        section {
+            padding: 8rem 8% 6rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff 50%, #00f2fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            position: relative;
+        }
+
+        .section-title h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: var(--primary-glow);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Servicios estilo Grid de Cristal */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(800px circle at var(--x, 0px) var(--y, 0px), rgba(0, 242, 254, 0.08), transparent 40%);
+            pointer-events: none;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: rgba(0, 242, 254, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 242, 254, 0.05);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            filter: drop-shadow(0 0 10px rgba(0, 242, 254, 0.2));
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .price {
+            display: block;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            font-size: 1.25rem;
+            text-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
+        }
+
+        /* Garantía y Cumplimiento de Leyes (NUEVO) */
+        .compliance-section {
+            background: linear-gradient(180deg, transparent, rgba(168, 85, 247, 0.03));
+            padding: 4rem 8%;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .compliance-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .compliance-item {
+            background: rgba(11, 15, 25, 0.5);
+            border: 1px dashed rgba(0, 242, 254, 0.2);
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .compliance-item:hover {
+            border-style: solid;
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.05);
+        }
+
+        .compliance-badge {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--accent-cyan);
+            text-shadow: 0 0 10px rgba(0, 242, 254, 0.2);
+            margin-bottom: 0.5rem;
+            display: block;
+            text-transform: uppercase;
+        }
+
+        .compliance-item p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Contenedor de Contacto */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 4rem;
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 3.5rem;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .contact-info p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 1.5rem;
+            color: var(--text-main);
+        }
+
+        .contact-item span {
+            font-size: 1.5rem;
+            background: rgba(0, 242, 254, 0.1);
+            padding: 8px;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 242, 254, 0.2);
+        }
+
+        /* Elementos del Formulario */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(11, 15, 25, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            color: var(--text-main);
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.15);
+        }
+
+        /* Notificación emergente */
+        #notification {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            border-radius: 12px;
+            display: none;
+            z-index: 2000;
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #05070c;
+            color: var(--text-muted);
+            text-align: center;
+            padding: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.9rem;
+        }
+
+        .footer-links {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-cyan);
+        }
+
+        /* MODALES PARA POLÍTICAS (NUEVO) */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(5, 7, 12, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 3000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .modal-content {
+            background: #0f172a;
+            border: 1px solid rgba(0, 242, 254, 0.2);
+            border-radius: 20px;
+            max-width: 650px;
+            width: 100%;
+            max-height: 80vh;
+            overflow-y: auto;
+            padding: 2.5rem;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content h3 {
+            font-size: 1.5rem;
+            color: var(--accent-cyan);
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 0.5rem;
+        }
+
+        .modal-content p, .modal-content ul {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1.2rem;
+            text-align: left;
+        }
+
+        .modal-content ul {
+            padding-left: 1.5rem;
+        }
+
+        .modal-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-close-btn {
+            background: var(--primary-glow);
+            color: var(--bg-dark);
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 1rem;
+            float: right;
+        }
+
+        .modal-close-btn:hover {
+            filter: brightness(1.1);
+        }
+
+        /* Adaptabilidad (Responsive) */
+        @media (max-width: 968px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 0.75rem 1.5rem; }
+            nav ul { display: none; }
+            .hero h1 { font-size: 2.8rem; }
+            .hero p { font-size: 1.1rem; }
+            section { padding: 6rem 5% 4rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navegación -->
+    <header>
+        <a href="#" class="brand-container">
+            <img src="./img/logo.png" alt="Logo TechNova" onerror="this.src='https://via.placeholder.com/150/0b0f19/00f2fe?text=TechNova'">
+            <span class="logo-text">TechNova Solutions</span>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Sección de Inicio -->
+    <section id="inicio" class="hero">
+        <h1>Impulsando tu<br>Infraestructura Digital</h1>
+        <p>Especialistas en la creación de software robusto a medida y en garantizar la continuidad operativa de tu negocio mediante soporte técnico remoto de alto rendimiento.</p>
+        <a href="#servicios" class="btn">Ver Catálogo de Servicios</a>
+    </section>
+
+    <!-- Sección de Servicios -->
+    <section id="servicios">
+        <div class="section-title">
+            <h2>Nuestros Servicios</h2>
+        </div>
+        <div class="services-grid">
+            <!-- Servicio 1: Desarrollo de Software a Medida -->
+            <div class="service-card">
+                <span class="service-icon">💻</span>
+                <h3>Desarrollo a Medida</h3>
+                <p>Diseñamos y programamos aplicaciones, plataformas web y herramientas digitales personalizadas 100% adaptadas a los flujos de trabajo de tu empresa.</p>
+                <span class="price">Presupuesto Cerrado</span>
+            </div>
+
+            <!-- Servicio 2: Soporte Técnico Remoto -->
+            <div class="service-card">
+                <span class="service-icon">⚡</span>
+                <h3>Soporte Técnico Remoto</h3>
+                <p>Asistencia inmediata para resolver problemas de software, optimizar sistemas operativos y dar respuesta técnica predictiva a tus empleados de forma segura.</p>
+                <span class="price">Desde 45€/mes</span>
+            </div>
+
+            <!-- Servicio 3: Sistemas y Backups -->
+            <div class="service-card">
+                <span class="service-icon">💾</span>
+                <h3>Sistemas y Backups</h3>
+                <p>Configuración integral de servidores (Proxmox, Ubuntu, Windows), almacenamiento seguro redundante (RAID) y planes optimizados de recuperación ante desastres.</p>
+                <span class="price">Desde 150€/proyecto</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Garantía Legal / Cumplimiento (NUEVA) -->
+    <section class="compliance-section">
+        <div class="section-title" style="margin-bottom: 2.5rem;">
+            <h2>Garantía de Cumplimiento Legal</h2>
+        </div>
+        <div class="compliance-grid">
+            <div class="compliance-item">
+                <span class="compliance-badge">🔒 RGPD Compliant</span>
+                <p>Garantizamos el tratamiento 100% confidencial y seguro de todos los datos personales bajo el Reglamento General de Protección de Datos Europeo.</p>
+            </div>
+            <div class="compliance-item">
+                <span class="compliance-badge">⚖️ LOPDGDD</span>
+                <p>Adaptación íntegra a la Ley Orgánica de Protección de Datos y Garantía de los Derechos Digitales española en todos nuestros servicios de software y soporte.</p>
+            </div>
+            <div class="compliance-item">
+                <span class="compliance-badge">🛡️ LSSI-CE</span>
+                <p>Cumplimiento estricto de las directrices de comercio electrónico, transparencia corporativa y comunicaciones informáticas seguras.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Contacto -->
+    <section id="contacto">
+        <div class="section-title">
+            <h2>Conecta con Nosotros</h2>
+        </div>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Contacto Directo</h3>
+                <p>Estudiaremos las necesidades de tu sistema informático o tu idea de software y diseñaremos una propuesta a tu escala operativa.</p>
+                
+                <div class="contact-item">
+                    <span>📍</span>
+                    <p>Calle Tecnología 42, Parque Tecnológico</p>
+                </div>
+                <div class="contact-item">
+                    <span>📧</span>
+                    <p>contacto@technovasolutions.com</p>
+                </div>
+                <div class="contact-item">
+                    <span>📞</span>
+                    <p>+34 900 123 456</p>
+                </div>
+            </div>
+
+            <!-- Formulario conectado a Formspree -->
+            <form id="contactForm" action="https://formspree.io/f/TU_ID_AQUÍ" method="POST">
+                <div class="form-group">
+                    <label for="name">Nombre</label>
+                    <input type="text" id="name" name="name" required placeholder="Tu nombre...">
+                </div>
+                <div class="form-group">
+                    <label for="email">Correo Electrónico</label>
+                    <input type="email" id="email" name="email" required placeholder="ejemplo@correo.com">
+                </div>
+                <div class="form-group">
+                    <label for="message">Mensaje</label>
+                    <textarea id="message" name="message" rows="4" required placeholder="¿Qué proyecto tienes en mente?"></textarea>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Enviar Consulta</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Ventana emergente tras envío -->
+    <div id="notification">¡Recibido! Nos comunicaremos contigo muy pronto.</div>
+
+    <!-- Modales de Políticas (NUEVOS) -->
+    <!-- Modal: Aviso Legal -->
+    <div id="modalAviso" class="modal-overlay">
+        <div class="modal-content">
+            <h3>Aviso Legal</h3>
+            <p><strong>TechNova Solutions</strong>, en cumplimiento de la Ley 34/2002 de Servicios de la Sociedad de la Información (LSSI-CE), informa a los usuarios de los siguientes datos identificativos:</p>
+            <ul>
+                <li><strong>Denominación Social:</strong> TechNova Solutions S.L.</li>
+                <li><strong>Domicilio Social:</strong> Calle Tecnología 42, Parque Tecnológico</li>
+                <li><strong>Email de Contacto:</strong> contacto@technovasolutions.com</li>
+                <li><strong>Teléfono:</strong> +34 900 123 456</li>
+            </ul>
+            <p>El acceso a este sitio web atribuye la condición de usuario, aceptando plenamente todos y cada uno de los términos aquí expuestos para un uso saludable, seguro y legal de la plataforma.</p>
+            <button class="modal-close-btn" onclick="closeModal('modalAviso')">Entendido</button>
+        </div>
+    </div>
+
+    <!-- Modal: Política de Privacidad -->
+    <div id="modalPrivacidad" class="modal-overlay">
+        <div class="modal-content">
+            <h3>Política de Privacidad</h3>
+            <p>En TechNova Solutions nos tomamos la seguridad de tus datos muy en serio. Al utilizar nuestro formulario de contacto, recopilamos la siguiente información bajo tu consentimiento expreso:</p>
+            <ul>
+                <li><strong>Nombre completo:</strong> Para dirigirnos a ti de forma directa y personalizada.</li>
+                <li><strong>Correo electrónico:</strong> Únicamente para contestar tu solicitud de presupuesto o soporte técnico.</li>
+                <li><strong>Mensaje:</strong> Datos necesarios para evaluar y entender tu proyecto.</li>
+            </ul>
+            <p>Tus datos jamás serán compartidos ni vendidos a terceros, y se conservarán únicamente el tiempo estrictamente necesario para resolver tu consulta.</p>
+            <p>Puedes ejercer en cualquier momento tus derechos de acceso, rectificación, supresión u oposición escribiendo a: <em>contacto@technovasolutions.com</em>.</p>
+            <button class="modal-close-btn" onclick="closeModal('modalPrivacidad')">Entendido</button>
+        </div>
+    </div>
+
+    <!-- Modal: Condiciones de Uso -->
+    <div id="modalCondiciones" class="modal-overlay">
+        <div class="modal-content">
+            <h3>Condiciones de Uso</h3>
+            <p>Bienvenido a TechNova Solutions. Las presentes condiciones regulan el uso correcto de este sitio web corporativo:</p>
+            <p>El usuario se compromete a hacer un uso adecuado y totalmente legal de la web y de sus formularios de contacto, absteniéndose de realizar envíos de contenido ilícito, ofensivo o spam.</p>
+            <p>TechNova se reserva el derecho de actualizar los contenidos y precios orientativos del catálogo de servicios para adaptarlos a las necesidades del mercado tecnológico en cada momento.</p>
+            <button class="modal-close-btn" onclick="closeModal('modalCondiciones')">Entendido</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 TechNova Solutions. Ingeniería de Software y Sistemas.</p>
+        <div class="footer-links">
+            <a onclick="openModal('modalAviso')">Aviso Legal</a>
+            <span>|</span>
+            <a onclick="openModal('modalPrivacidad')">Política de Privacidad</a>
+            <span>|</span>
+            <a onclick="openModal('modalCondiciones')">Condiciones de Uso</a>
+        </div>
+    </footer>
+
+    <script>
+        // Efecto visual de brillo reactivo al mover el ratón sobre las tarjetas de servicio
+        const cards = document.querySelectorAll('.service-card');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--x', `${x}px`);
+                card.style.setProperty('--y', `${y}px`);
+            });
+        });
+
+        // Simulación o control de envío con notificación interactiva
+        const form = document.getElementById('contactForm');
+        form.addEventListener('submit', function(e) {
+            if (form.getAttribute('action').includes('TU_ID_AQUÍ')) {
+                e.preventDefault();
+                const notification = document.getElementById('notification');
+                notification.style.display = 'block';
+                form.reset();
+                setTimeout(() => {
+                    notification.style.display = 'none';
+                }, 4000);
+            }
+        });
+
+        // Funciones interactivas para abrir y cerrar las ventanas modales legales
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        // Cerrar modales si se hace clic fuera del contenido principal
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal-overlay')) {
+                event.target.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
